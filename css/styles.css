@@ -1,0 +1,404 @@
+*{margin: 0; padding: 0;}
+
+body, html{
+	height: 100%;
+	background:url(../img/fond-metal.jpg);
+	overflow: hidden;
+	font-family: 'Reenie Beanie', cursive; /* passe */
+}
+
+#table-dessin {
+	width:100%;
+	height:100%;
+	//z-index:0;
+	float:left;
+	-moz-box-sizing:border-box;
+	padding:4px 10px 10px 10px;
+}
+
+#regle {
+		background:url(../img/regle-765-zoom.png) no-repeat;
+		width:765px;
+		height:88px;
+		//pointer-events:none;
+		position:absolute;
+		z-index:2;
+		top:79px;
+		left:4px;
+		cursor:n-resize;
+		//margin-left:10px;
+	}
+	#regle h1 {
+		position:relative;
+		left: 192px;
+		top: 12px;
+		opacity: 0.9;
+		width:242px;
+		height:55px;
+		padding:12px 5px 0px 5px;
+		font-size: 30px;
+		font-weight:bold;
+		color:#A92128;
+		line-height: 17px;
+		text-align: center;
+		background:url(../img/etiquette-titre.png) no-repeat;
+	}
+	#zoom-in {
+		position:absolute;
+		top: 35px;
+		left: 655px;
+		/*width: 31px;
+		height: 18px;*/
+	}
+	#zoom-out {
+		position:absolute;
+		top: 35px;
+		left: 716px;
+		/*width: 31px;
+		height: 18px;*/
+	}
+	#zoom-in a {
+		width: 31px;
+		height: 18px;
+		display:block;
+	}
+	#zoom-out a {
+		width: 31px;
+		height: 18px;
+		display:block;
+	}
+
+#top {
+	left: 10px;
+	right:10px;
+    position: absolute;
+	height:65px;
+}
+	#haut-gauche {
+		width:164px;
+		height:100%;
+		float:left;
+		background:url(../img/coin-haut-gauche-ombre.png) no-repeat;
+		
+	}
+	#haut-milieu {
+		width: 100%;
+		height:100%;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		padding-left:164px;
+		padding-right:73px;
+	}
+	#haut-milieu-bg {
+		background:url(../img/bord-haut.png) repeat-x;
+		width: 100%;
+		height:100%;
+	}
+	#haut-droite {
+	   width:73px;
+	   height:100%;
+	   background-color:#0033CC;
+	   float:right;
+	   background:url(../img/coin-haut-droite-ombre.png) no-repeat;
+	}
+
+#middle {
+	bottom: 48px;
+    left: 10px;
+	right:10px;
+    position: absolute;
+    top: 69px;
+}
+	#milieu-gauche {
+		width:164px;
+		height:100%;
+		float:left;
+		background:url(../img/bord-gauche.png) repeat-y;
+	}
+	#map {
+		height: 100%;
+		background:url(../img/trame.png) repeat;
+		left: 162px;
+		position: absolute!important;
+		right: 73px;
+	}
+	#milieu-droite {
+	   width:73px;
+	   height:100%;
+	   background-color:#0033CC; 
+	   float:right;
+	   background:url(../img/bord-droite-ombre.png) repeat-y;
+	}
+
+#bottom {
+	position:absolute;
+	bottom:5px;;
+	left: 10px;
+	right:10px;
+	height:43px;
+}
+
+	#bas-gauche {
+		width:164px; 
+		height:100%;
+		float:left;
+		background:url(../img/coin-bas-gauche-ombre.png) no-repeat;
+	}
+	#bas-droite {
+	   width:73px; 
+	   height:100%; 
+	   background-color:#0033CC; 
+	   float:right;
+	   background:url(../img/coin-bas-droite-ombre.png) no-repeat;
+	}
+	#bas-milieu {
+		width: 100%;
+		height:100%;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		padding-left:164px;
+		padding-right:73px;
+	}
+	#bas-milieu-bg {
+		background:url(../img/bord-bas-ombre.png) repeat-x;
+		width: 100%;
+		height:100%;
+	}
+
+#bloc_legend_credits {
+	position:absolute;
+	width:358px;
+	height:550px;
+	z-index:15;
+	top:87%;
+	left:60%;
+	cursor:move;
+	transform:rotate(5deg);
+	-moz-transform:rotate(5deg);
+	-webkit-transform:rotate(5deg);
+	-o-transform:rotate(5deg);
+	-ms-transform:rotate(5deg);
+}
+
+#blc_top {
+	width:100%;
+	height:72px;
+	padding-top:1px;
+	background:url(../img/bloc-notes-top.png) no-repeat;
+}
+#blc_content {
+	width:299px;
+	height:477px;
+	float:left;
+	background:url(../img/bloc-notes-content.png) no-repeat;
+	position:relative;
+}
+#blc_tabs_legend {
+	width:59px;
+	height:477px;
+	float:right;
+	background:url(../img/bloc-notes-tab-legend.png) no-repeat;
+	position:relative;
+}
+#blc_tabs_credits {
+	width:59px;
+	height:477px;
+	float:right;
+	background:url(../img/bloc-notes-tab-credits.png) no-repeat;
+	position:relative;
+	display:none;
+}
+#blc_tabs {
+	
+}
+#link_legend {
+	font-size:22px;
+	font-weight:bold;
+	right: -8px;
+	top: 135px;
+	position:absolute;
+	transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+}
+#link_credits {
+	font-size:22px;
+	font-weight:bold;
+	right: -10px;
+	top: 290px;
+	position:absolute;
+	transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+}
+
+#content_legend {
+	position:absolute;
+	left:10px;
+	top:-5px;
+	width:320px;
+	display:block;
+}
+
+#content_credits {
+	position:absolute;
+	left:10px;
+	top:-5px;
+	width:320px;
+	display:none;
+	font-size:20px;
+	/*-moz-font-smooth: antialiased;
+	-webkit-text-stroke: 1px
+	text-shadow: #fff 0px 1px 1px;*/
+	-webkit-font-smooth: never;
+	width:310px;
+	z-index:15;
+}
+
+#bloc_credits {
+	background:url(../img/bloc-notes-credits.png) no-repeat;
+	position:absolute;
+	width:358px;
+	height:550px;
+	padding-left:10px;
+	z-index:15;
+	top:87%;
+	left:60%;
+	cursor:move;
+	transform:rotate(5deg);
+	-moz-transform:rotate(5deg);
+	-webkit-transform:rotate(5deg);
+	-o-transform:rotate(5deg);
+	-ms-transform:rotate(5deg);
+}
+
+	a {
+		text-decoration:none;
+		color:black;
+		font-weight:bold;
+	}
+	
+	#content_credits a {
+		/*color:#A1D957;*/
+		color:#5b891f;
+	}
+
+	h2 {
+		font-size: 25px;
+		font-weight: bold;
+		line-height: 17px;
+		margin-top: 30px;
+		text-align: center;
+		color:#A92128;
+		width: 335px;
+		height: 35px;
+	}
+	h2 a {
+		text-decoration:none;
+		color:#A92128;
+	}
+	h3 {
+		font-size:25px;
+		font-weight:bold;
+		margin-top:5px;
+		width:90%;
+		color:#A92128;
+		padding-left:40px;
+	}
+	h4 {
+		font-size:25px;
+		font-weight:bold;
+		margin-top:5px;
+		width:90%;
+		padding-left:40px;
+		/*color:#5FBEDD;*/
+		color:#2383a3;
+	}
+	
+	li {
+		list-style-image : url(../img/puce.png);
+		margin-left:40px;
+		line-height: 25px;
+	}
+	
+	.theme {
+		width:100%;
+		height: auto;
+		margin: 0 auto;
+	}
+	
+	/* Légende : Lieux */
+		#bloc_places {
+			//visibility:hidden;
+			overflow:hidden;
+			float:left;
+			height:auto;
+		}
+		.places {
+			width:75px;
+			height:73px;
+			float:left;
+			text-align:center;
+			font-size:22px;
+			vertical-align:middle;
+			position:relative;
+		}
+		#places_city {
+			background:url(../img/post-it_city.png) no-repeat center top;
+		}
+		#places_town {
+			background:url(../img/post-it_town.png) no-repeat center top;
+		}
+		#places_village {
+			background:url(../img/post-it_village.png) no-repeat center top;
+		}
+		#places_district {
+			background:url(../img/post-it_district.png) no-repeat center top;
+			display:none;
+		}
+		
+		/* Légende : Landuse */
+		#bloc_landuse {
+			//visibility:hidden;
+			overflow:hidden;
+			float:left;
+		}
+		.landuse {
+			width:75px;
+			height:100px;
+			float:left;
+			text-align:center;
+			font-size:18px;
+			line-height:13px;
+		}
+		
+		/* Légende : Buildings */
+		#bloc_buildings {
+			display:none;
+			overflow:hidden;
+			float:left;
+		}
+		.buildings {
+			width:75px;
+			height:100px;
+			float:left;
+			text-align:center;
+			line-height:13px;
+			font-size:18px;
+		}
+		#buildings_habitat {
+			//background:url(../img/post-it-buildings_habitat.png) no-repeat center top;
+		}
+		#buildings_historique {
+			//background:url(../img/post-it-buildings_historique.png) no-repeat center top;
+		}
+		#buildings_public {
+			//background:url(../img/post-it-buildings_public.png) no-repeat center top;
+		}
+		#buildings_religion {
+			//background:url(../img/post-it-buildings_religion.png) no-repeat center top;
+		}

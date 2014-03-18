@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
+<head> 
+<title>An hand drawn map of Toulouse</title> 
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" /> 
+<link rel="shortcut icon" type="image/x-icon" href="http://makina-corpus.com/favicon.ico" />
+
+<link type="text/css" href="css/styles-v2.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/plugins/CSSPlugin.min.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<script type="text/javascript" src="js/dragOn.min.js"></script>
+
+</head> 
+ 
+<body > 
+<div id="regle">
+	<h1>An hand drawn map of Toulouse</h1>
+	<div class="leaflet-control-container">
+		<div id="zoom-in"><a href="#" onclick="map.zoomIn();"></a></div>
+		<div id="zoom-out"><a href="#" onclick="map.zoomOut();"></a></div>
+	</div>
+</div>
+
+<div id="table-dessin">
+	<div id="top">
+		<div id="haut-gauche"></div>
+		<div id="haut-droite"></div>
+		<div id="haut-milieu">
+			<div id="haut-milieu-bg"></div>
+		</div>
+	</div>
+	<div id="middle">
+		<div id="milieu-gauche"></div>
+		<div id="milieu-droite"></div>
+		<div id="map"></div>
+	</div>
+	<div id="bottom">
+		<div id="bas-gauche"></div>
+		<div id="bas-droite"></div>
+		<div id="bas-milieu">
+			<div id="bas-milieu-bg"></div>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="bloc_legend_credits">
+	<div id="blc_top"><h2><a href="#" id="action-title">Legend and Credits</a></h2></div>
+	<div id="blc_content">
+		<div id="content_legend">
+			<div id="bloc_places" class="theme">
+				<h3>Places</h3>
+				<div id="places_city" class="places">City</div>
+				<div id="places_town" class="places">Town</div>
+				<div id="places_village" class="places">Village</div>
+				<div id="places_district" class="places">District</div>
+			</div>
+			<div id="bloc_landuse" class="theme">
+				<h3>Landuse</h3>
+				<div class="landuse"><img src="img/post-it-landuse-residential.png"><br>Residential</div>
+				<div class="landuse"><img src="img/post-it-landuse-commercial.png"><br>Commercial</div>
+				<div class="landuse"><img src="img/post-it-landuse-industrial.png"><br>Industrial</div>
+				<div class="landuse"><img src="img/post-it-landuse-natural.png"><br>Natural</div>
+				<div class="landuse"><img src="img/post-it-landuse-parks.png"><br>Parks</div>
+				<div class="landuse"><img src="img/post-it-landuse-water.png"><br>Water way</div>
+			</div>
+			<div id="bloc_buildings" class="theme">
+				<h3>Buildings</h3>
+				<div id="buildings_habitat" class="buildings"><img src="img/post-it-buildings_habitat.png"><br>House</div>
+				<div id="buildings_historique" class="buildings"><img src="img/post-it-buildings_historique.png"><br>Historic</div>
+				<div id="buildings_public" class="buildings"><img src="img/post-it-buildings_public.png"><br>Public</div>
+				<div id="buildings_religion" class="buildings"><img src="img/post-it-buildings_religion.png"><br>Place of worship</div>
+			</div>
+		</div>
+		<div id="content_credits">
+			<h3>Credits</h3>
+			<ul>
+			<li>Author : <a href="mailto:karl.azemar@gmail.com">Karl Azemar</a>, for <a href="http://www.makina-corpus.com" target="_blank">Makina Corpus</a><br>March 2014</li>
+			</ul>
+			<h4>The map :</h4>
+			<ul>
+				<li>Based on <a href="http://www.openstreetmap.org/#map=13/43.6082/1.4581" target="_blank">OpenStreetMap</a> datas</li>
+				<li>Styled with <a href="https://www.mapbox.com/tilemill/" target="_blank">TileMill</a></li>
+				<li>Labels writed with <a href="http://www.dafont.com/fr/ten-o-clock.font" target="_blank">Ten O Clock font</a> and <a href="http://www.dafont.com/fr/dk-crayon-crumble.font" target="_blank">DK Crayon Crumble font</a></li>
+				<li>Textures created with <a href="http://www.gimp.org/" target="_blank">GIMP</a></li>
+			</ul>
+			<h4>The web page :</h4>
+			<ul>
+				<li>Map integrated with <a href="http://leafletjs.com/" target="_blank">Leaflet</a></li>
+				<li>Post-it, notepad, sticky tape textures : <a href="http://www.fuzzimo.com" target="_blank">Fuzzimo</a></li>
+				<li>Labels writed with <a href="https://www.google.com/fonts/specimen/Reenie+Beanie" target="_blank">Reenie Beanie font</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="blc_tabs_legend"></div>
+	<div id="blc_tabs_credits"></div>
+	<div id="link_legend" class="blc_tabs"><a href="#" onclick="javascript:switch_tabs('legend');">Legend</a></div>
+	<div id="link_credits" class="blc_tabs"><a href="#" onclick="javascript:switch_tabs('credits');">Credits</a></div>
+</div>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</body> 
+</html>
