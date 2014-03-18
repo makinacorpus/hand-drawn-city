@@ -4,7 +4,7 @@ body, html{
 	height: 100%;
 	background:url(../img/fond-metal.jpg);
 	overflow: hidden;
-	font-family: 'Reenie Beanie', cursive; /* passe */
+	font-family: 'Reenie Beanie', cursive;
 }
 
 #table-dessin {
@@ -47,15 +47,11 @@ body, html{
 		position:absolute;
 		top: 35px;
 		left: 655px;
-		/*width: 31px;
-		height: 18px;*/
 	}
 	#zoom-out {
 		position:absolute;
 		top: 35px;
 		left: 716px;
-		/*width: 31px;
-		height: 18px;*/
 	}
 	#zoom-in a {
 		width: 31px;
@@ -208,32 +204,23 @@ body, html{
 	position:relative;
 	display:none;
 }
-#blc_tabs {
-	
+.blc_tabs {
+	font-size:22px;
+	font-weight:bold;
+	position:absolute;
+	transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
 }
 #link_legend {
-	font-size:22px;
-	font-weight:bold;
 	right: -8px;
 	top: 135px;
-	position:absolute;
-	transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-webkit-transform:rotate(90deg);
-	-o-transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
 }
 #link_credits {
-	font-size:22px;
-	font-weight:bold;
 	right: -10px;
 	top: 290px;
-	position:absolute;
-	transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-webkit-transform:rotate(90deg);
-	-o-transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
 }
 
 #content_legend {
@@ -251,10 +238,6 @@ body, html{
 	width:320px;
 	display:none;
 	font-size:20px;
-	/*-moz-font-smooth: antialiased;
-	-webkit-text-stroke: 1px
-	text-shadow: #fff 0px 1px 1px;*/
-	-webkit-font-smooth: never;
 	width:310px;
 	z-index:15;
 }
@@ -283,7 +266,6 @@ body, html{
 	}
 	
 	#content_credits a {
-		/*color:#A1D957;*/
 		color:#5b891f;
 	}
 
@@ -389,16 +371,4 @@ body, html{
 			text-align:center;
 			line-height:13px;
 			font-size:18px;
-		}
-		#buildings_habitat {
-			//background:url(../img/post-it-buildings_habitat.png) no-repeat center top;
-		}
-		#buildings_historique {
-			//background:url(../img/post-it-buildings_historique.png) no-repeat center top;
-		}
-		#buildings_public {
-			//background:url(../img/post-it-buildings_public.png) no-repeat center top;
-		}
-		#buildings_religion {
-			//background:url(../img/post-it-buildings_religion.png) no-repeat center top;
 		}
