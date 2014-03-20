@@ -1,0 +1,667 @@
+{
+  "bounds": [
+    1.2196,
+    43.4848,
+    1.6474,
+    43.6984
+  ],
+  "center": [
+    1.4373,
+    43.6031,
+    13
+  ],
+  "format": "png",
+  "interactivity": false,
+  "minzoom": 13,
+  "maxzoom": 19,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "variables.mss",
+    "style.mss",
+    "routes.mss",
+    "surfaces.mss"
+  ],
+  "Layer": [
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way FROM planet_osm_polygon WHERE boundary='administrative' AND admin_level='8') as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "fond",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "fond"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way,boundary FROM planet_osm_polygon WHERE boundary='administrative' AND admin_level='10') as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "quartiers_tls",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "quartiers_tls",
+      "status": "off"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT ST_Simplify(way,50) as way,landuse,way_area,\nCASE\nWHEN landuse = 'residential' THEN 'residential'\nWHEN landuse IN ('commercial','retail') THEN 'commercial'\nWHEN landuse = 'industrial' THEN 'industrial'\nWHEN landuse = 'cemetery' THEN 'cemetery'\nWHEN landuse IN ('farm','farmland','farmyard','forest','grass','vineyard') THEN 'natural'\nELSE 'autres'\nEND AS type\nFROM (SELECT * FROM planet_osm_polygon WHERE landuse IS NOT NULL) as zones) as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "zones",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs ",
+      "advanced": {},
+      "name": "zones"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT ST_Simplify( ST_Buffer(way,50),5) as way,landuse,name FROM planet_osm_polygon WHERE landuse IN ('residential','commercial','industrial','cemetery')) as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "zones_buffer",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "zones_buffer",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "zones_buffer",
+      "geometry": "polygon"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.1530761512228915,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT way, landuse AS type  FROM planet_osm_polygon  WHERE landuse IN ('cemetery')) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "128359.85,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "landuse",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "landuse"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way, waterway, name\nFROM planet_osm_polygon WHERE waterway='riverbank') AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "surfaces_eaux",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs "
+      },
+      "id": "surfaces_eaux",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs ",
+      "advanced": {},
+      "name": "surfaces_eaux"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.1530761512228915,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select name, way from planet_osm_roads where bridge is not null) as data ",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "128359.85,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "ponts-ligne",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "ponts-ligne",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "ponts-ligne",
+      "status": "off"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.1530761512228915,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select name,\nCASE\nWHEN nb>1 THEN ST_Buffer(way,7)\nELSE ST_Buffer(way,5)\nEND AS way\nfrom (SELECT t2.way, t2.name, (select count(t.name) as nb from planet_osm_line as t where t.bridge is not null and t.name=t2.name group by name) as nb FROM planet_osm_line as t2 where t2.bridge is not null) as data order by name) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "128359.85,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "ponts",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs"
+      },
+      "id": "ponts",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs",
+      "advanced": {},
+      "name": "ponts"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.2186536161212584,
+        43.46779197655873,
+        1.6396706335906912,
+        43.729183577002765
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT way, railway AS type  FROM planet_osm_roads  WHERE railway IN ('tram')) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "135659.9,5383447.79,182527.3,5423627.92",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "rail_tram",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs",
+      "advanced": {},
+      "name": "rail_tram"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.2186536161212584,
+        43.46779197655873,
+        1.6396706335906912,
+        43.729183577002765
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT way, railway AS type  FROM planet_osm_roads  WHERE railway IN ('rail')) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "135659.9,5383447.79,182527.3,5423627.92",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "rail_train",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs",
+      "advanced": {},
+      "name": "rail_train"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT way, leisure AS type  FROM planet_osm_polygon  WHERE leisure IN ('park')) AS data",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "parcs",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs ",
+      "advanced": {},
+      "name": "parcs"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        1.3518823184402342,
+        43.532691041494594,
+        1.5140863761341907,
+        43.66851597780438
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way,building,amenity,historic,name, way_area,\nCASE\nWHEN amenity ='place_of_worship' THEN 'religion'\nWHEN amenity != 'public_building' OR amenity != 'place_of_worship' OR amenity IS NULL AND historic IS NULL THEN 'habitat'\nWHEN historic IS NOT NULL THEN 'historique'\nWHEN amenity ='public_building' AND historic IS NULL THEN 'public'\nELSE 'autres'\nEND AS type\nFROM (SELECT * FROM planet_osm_polygon WHERE building IS NOT NULL) as buildings) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "150490.851301197,5393407.55854231,168547.324408291,5414286.75197661",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "buildings",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs ",
+      "advanced": {},
+      "name": "buildings"
+    },
+    {
+      "extent": [
+        1.26454545772791,
+        43.51329318185202,
+        1.6035876332850094,
+        43.677441219534934
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "poly2line",
+        "key_field": "",
+        "geometry_field": "long_way",
+        "extent_cache": "auto",
+        "extent": "140768.556439218,5390429.53400465,178510.558779678,5415660.40485696",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "buildings_lines",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs",
+      "advanced": {},
+      "name": "buildings_lines",
+      "geometry": "linestring"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        1.1530761512228915,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way, name,\nCASE\nWHEN highway IN ('footway','service') THEN 'chemins'\nWHEN highway IN ('motorway','trunk','primary','secondary') THEN 'routes_principales'\nWHEN highway IN ('motorway_link','trunk_link','primary_link','secondary_link') THEN 'routes_principales_links'\nWHEN highway IN ('tertiary','residential','unclassified') THEN 'routes_secondaires'\nWHEN highway IN ('tertiary_link','residential_link') THEN 'routes_secondaires_links'\nELSE 'autres'\nEND AS type\nFROM (SELECT * FROM planet_osm_line WHERE highway IS NOT NULL) as roads) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "128359.85,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "routes",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "routes"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way from planet_osm_polygon where aeroway is not null) as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "aerodrome",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "aerodrome"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT ST_Buffer(way,50) as way, waterway AS type  FROM planet_osm_polygon WHERE waterway='riverbank') AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "surfaces_eaux_buffer",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "surfaces_eaux_buffer"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT ST_Centroid(way) as way, name, way_area, length(name) as longueur,\nCASE\nWHEN amenity ='place_of_worship' THEN 'religion'\nWHEN historic IS NOT NULL THEN 'historique'\nWHEN amenity ='public_building' THEN 'public'\nELSE 'autres'\nEND AS type\nFROM (SELECT * FROM planet_osm_polygon WHERE building IS NOT NULL AND name IS NOT NULL) as buildings) AS data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "noms_batiments",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "noms_batiments",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "noms_batiments"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        1.1993272610987114,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT name,way, length(name) as length, round((random()*10))::integer as random,\nCASE\nWHEN name ~ '(\\w{10})(-)?$' THEN 'oui'\nELSE ''\nEND AS long_mot\nFROM planet_osm_point WHERE place='suburb') as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "133508.5,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "etiq_quartiers",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "etiq_quartiers",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "etiq_quartiers"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        1.1993272610987114,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT name,way FROM planet_osm_point WHERE place='suburb') as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "133508.5,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "noms_quartiers",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "noms_quartiers",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "noms_quartiers"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        1.1993272610987114,
+        42.86018609379548,
+        2.2463287266052583,
+        43.8156097697926
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT DISTINCT ST_Centroid(poly.way) as way, point.place, length(poly.name) as length, poly.name, round((random()*10))::integer as random,\nCASE\nWHEN poly.name ~ '(\\w{10})(-)?$' THEN 'oui'\nELSE ''\nEND AS long\nFROM planet_osm_polygon poly, planet_osm_point point \nwhere poly.boundary='administrative' AND poly.admin_level='8' AND poly.name=point.name AND point.place IS NOT NULL) as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "133508.5,5290714.9,250060.17,5436951.57",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "id": "etiq_villes",
+        "project": "Toulouse",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "etiq_villes",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "etiq_villes"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select DISTINCT poly.name,ST_Centroid(poly.way) as way, point.population, point.place from planet_osm_polygon poly, planet_osm_point point where poly.boundary='administrative' AND poly.admin_level='8' AND poly.name=point.name AND point.place IS NOT NULL) as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "noms_villes",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "noms_villes"
+    },
+    {
+      "extent": [
+        1.2057575815654957,
+        43.39510047916572,
+        1.6221707332038156,
+        43.72585263653724
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way, waterway, name\nFROM planet_osm_line WHERE waterway IN ('canal','river')) as data",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "134224.32,5372304.84,180579.22,5423114.8",
+        "dbname": "osm",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "noms_eaux",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "noms_eaux",
+      "geometry": "linestring"
+    }
+  ],
+  "scale": 1,
+  "metatile": 4,
+  "name": "Carte style dessin - Toulouse",
+  "description": "Données extraites de OSM",
+  "attribution": ""
+}
