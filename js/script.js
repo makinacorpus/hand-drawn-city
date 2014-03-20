@@ -46,7 +46,7 @@ map.setView([43.6, 1.44], 13);
 
 // Affichage de la carte tiles.cg44.makina-corpus.net
 var tilesUrl = 'http://{s}.tiles.cg44.makina-corpus.net/toulouse-hand-drawn/{z}/{x}/{y}.png';
-L.tileLayer(tilesUrl, {minZoom: 13, maxZoom: 19, subdomains: 'bdefgh'}).addTo(map);
+L.tileLayer(tilesUrl, {minZoom: 13, maxZoom: 19, subdomains: 'abde'}).addTo(map);
 map.on("zoomend", function () {
 	zoom = map.getZoom( );
 	if ( zoom > 14 ) {
