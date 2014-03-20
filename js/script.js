@@ -22,13 +22,15 @@ function switch_tabs(show) {
 	}
 }
 
-// Déplacer le bloc Légende/Crédits
-var draggable = document.getElementById('regle');
-var options = {
+// Déplacer la règle
+var draggable_regle = document.getElementById('regle');
+var options_regle = {
 	moveArea : document.getElementById('middle'),
 	moveHoriz:false
 };
-dragOn.apply( draggable, options );
+dragOn.apply( draggable_regle, options_regle );
+
+// Déplacer le bloc Légende/Crédits
 var draggable_legend = document.getElementById('bloc_legend_credits');
 dragOn.apply( draggable_legend );
 
@@ -46,7 +48,7 @@ map.setView([43.6, 1.44], 13);
 
 // Affichage de la carte tiles.cg44.makina-corpus.net
 var tilesUrl = 'http://{s}.tiles.cg44.makina-corpus.net/toulouse-hand-drawn/{z}/{x}/{y}.png';
-L.tileLayer(tilesUrl, {minZoom: 13, maxZoom: 19, subdomains: 'abde'}).addTo(map);
+L.tileLayer(tilesUrl, {minZoom: 13, maxZoom: 19, subdomains: 'abcdefgh'}).addTo(map);
 map.on("zoomend", function () {
 	zoom = map.getZoom( );
 	if ( zoom > 14 ) {
