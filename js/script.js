@@ -50,8 +50,9 @@ map.setView([43.6, 1.44], 13);
 var hash = new L.Hash(map);
 
 // Affichage de la carte tiles.cg44.makina-corpus.net
-var tilesUrl = 'https://{s}-tiles-vuduciel2.makina-corpus.net/toulouse-hand-drawn/{z}/{x}/{y}.png';
-L.tileLayer(tilesUrl, {minZoom: 13, maxZoom: 19, subdomains: 'abcdef'}).addTo(map);
+const p = new pmtiles.PMTiles('https://makina-pmtiles.s3-website.fr-par.scw.cloud/toulouse-hand-drawn.pmtiles')
+pmtiles.leafletRasterLayer(p, { minZoom: 13, maxZoom: 19 }).addTo(map);
+
 map.on("zoomend", function () {
 	zoom = map.getZoom( );
 	if ( zoom > 14 ) {
